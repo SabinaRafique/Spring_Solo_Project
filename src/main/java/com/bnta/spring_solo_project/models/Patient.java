@@ -2,6 +2,7 @@ package com.bnta.spring_solo_project.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -44,7 +45,8 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(String name, String gender, LocalDate dob, String phoneNumber, String address, Doctor doctor, List<Medication> medications) {
+    public Patient(String name, String gender, LocalDate dob, String phoneNumber, String address,
+                   Doctor doctor, List<Medication> medications) {
         this.name = name;
         this.gender = gender;
         this.dob = dob;
