@@ -1,14 +1,25 @@
 package models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "medicines")
 public class Medicine {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
+
+    @Column
     private String name;
+
+    @Column
     private float price;
 
+    @ManyToMany(mappedBy = "medicines")
     private List<Patient> patients;
 
 

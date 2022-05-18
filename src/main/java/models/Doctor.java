@@ -1,13 +1,24 @@
 package models;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "doctors")
 public class Doctor {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
+
+    @Column
     private String name;
+
+    @Column
     private String speciality;
 
+    @OneToMany(mappedBy = "doctor")
     private List<Patient> patients;
 
 

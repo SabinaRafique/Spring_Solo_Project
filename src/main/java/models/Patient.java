@@ -1,20 +1,47 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "patients")
 public class Patient {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
+
+    @Column
     private String name;
+
+    @Column
     private String gender;
+
+    @Column
     private LocalDate dob;
+
+    @Column
     private String phoneNumber;
+
+    @Column
     private String address;
 
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
+
+    @ManyToMany
+    @JoinTable(
+            name = "patients_medicines",
+            joinColumns = {@JoinColumn(name = "patients_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "medicines_id", nullable = false)}
+    )
     private List<Medicine> medicineList;
 
 
