@@ -6,10 +6,7 @@ import com.bnta.spring_solo_project.repositories.MedicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +19,7 @@ public class MedicationController {
     MedicationRepository medicationRepository;
 
     // INDEX - tested on Postman
-    @GetMapping
+    @GetMapping // localhost:8080/medications
     public ResponseEntity<List<Medication>> getMedications() {
         return new ResponseEntity<>(medicationRepository.findAll(), HttpStatus.OK);
     }
@@ -34,4 +31,11 @@ public class MedicationController {
         // Ternary Operator: condition ? true statement : false statement
         return new ResponseEntity<>(product, product.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
+
+    // CREATE
+    @PostMapping // localhost:8080/medications
+    public void createMedication(@RequestBody Medication medication) {
+        medicationRepository.save(medication);
+    }
+    // Functional POST request - can add items through Postman
 }
