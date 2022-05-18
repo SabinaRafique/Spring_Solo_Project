@@ -1,6 +1,6 @@
-package repositories;
+package com.bnta.spring_solo_project.repositories;
 
-import models.Patient;
+import com.bnta.spring_solo_project.models.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PatientRepository extends JpaRepository<Patient, Long> {

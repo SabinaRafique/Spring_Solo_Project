@@ -1,11 +1,11 @@
-package models;
+package com.bnta.spring_solo_project.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "medicines")
+@Table(name = "medications")
 public class Medication {
 
     @Id
@@ -16,21 +16,21 @@ public class Medication {
     @Column
     private String name;
 
-    @Column
-    private float price;
-
     @ManyToMany(mappedBy = "medications")
     private List<Patient> patients;
+
+    @ManyToMany (mappedBy = "medications")
+    private List<Doctor> doctors;
 
 
     // Constructors
     public Medication() {
     }
 
-    public Medication(String name, float price) {
+    public Medication(String name) {
         this.name = name;
-        this.price = price;
         this.patients = new ArrayList<>();
+        this.doctors = new ArrayList<>();
     }
 
 
@@ -47,14 +47,6 @@ public class Medication {
         this.name = name;
     }
 
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
     public List<Patient> getPatients() {
         return patients;
     }
@@ -63,14 +55,22 @@ public class Medication {
         this.patients = patients;
     }
 
+    public List<Doctor> getDoctors() {
+        return doctors;
+    }
+
+    public void setDoctors(List<Doctor> doctors) {
+        this.doctors = doctors;
+    }
+
 
     @Override
     public String toString() {
-        return "Medicine{" +
+        return "Medication{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", price=" + price +
                 ", patients=" + patients +
+                ", doctors=" + doctors +
                 '}';
     }
 }

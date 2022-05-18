@@ -1,8 +1,7 @@
-package models;
+package com.bnta.spring_solo_project.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,28 +32,26 @@ public class Patient {
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
-
     @ManyToMany
     @JoinTable(
             name = "patients_medications",
-            joinColumns = {@JoinColumn(name = "patients_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "medication_id", nullable = false)}
+            joinColumns = @JoinColumn(name = "patient_id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "medication_id", nullable = false)
     )
-    private List<Medication> medicationList;
+    private List<Medication> medications;
 
-
-    //Constructors
+    // Constructor
     public Patient() {
     }
 
-    public Patient(String name, String gender, LocalDate dob, String phoneNumber, String address, Doctor doctor) {
+    public Patient(String name, String gender, LocalDate dob, String phoneNumber, String address, Doctor doctor, List<Medication> medications) {
         this.name = name;
         this.gender = gender;
         this.dob = dob;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.doctor = doctor;
-        this.medicationList = new ArrayList<>();
+        this.medications = medications;
     }
 
 
@@ -111,12 +108,12 @@ public class Patient {
         this.doctor = doctor;
     }
 
-    public List<Medication> getMedicineList() {
-        return medicationList;
+    public List<Medication> getMedications() {
+        return medications;
     }
 
-    public void setMedicineList(List<Medication> medicationList) {
-        this.medicationList = medicationList;
+    public void setMedications(List<Medication> medications) {
+        this.medications = medications;
     }
 
 
@@ -130,7 +127,7 @@ public class Patient {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", address='" + address + '\'' +
                 ", doctor=" + doctor +
-                ", medicineList=" + medicationList +
+                ", medications=" + medications +
                 '}';
     }
 }
