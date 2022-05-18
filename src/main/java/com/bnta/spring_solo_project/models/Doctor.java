@@ -81,6 +81,16 @@ public class Doctor {
     }
 
 
+    // Add/Remove Patients
+    public void addPatient(Patient patient){
+        this.patients.add(patient);
+    }
+
+    public void remove(Patient patient){
+        this.patients.add(patient);
+    }
+
+
     @Override
     public String toString() {
         return "Doctor{" +
