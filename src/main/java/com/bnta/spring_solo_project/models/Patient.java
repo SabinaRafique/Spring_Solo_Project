@@ -1,5 +1,7 @@
 package com.bnta.spring_solo_project.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -31,6 +33,7 @@ public class Patient {
 
     @ManyToOne
     @JoinColumn(name = "doctor_id")
+    @JsonIgnoreProperties({"patients"})
     private Doctor doctor;
 
     @ManyToMany
@@ -39,6 +42,7 @@ public class Patient {
             joinColumns = @JoinColumn(name = "patient_id", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "medication_id", nullable = false)
     )
+    @JsonIgnoreProperties({"patients"})
     private List<Medication> medications;
 
     // Constructor
