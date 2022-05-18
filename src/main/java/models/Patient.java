@@ -1,7 +1,5 @@
 package models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -38,11 +36,11 @@ public class Patient {
 
     @ManyToMany
     @JoinTable(
-            name = "patients_medicines",
+            name = "patients_medications",
             joinColumns = {@JoinColumn(name = "patients_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "medicines_id", nullable = false)}
+            inverseJoinColumns = {@JoinColumn(name = "medication_id", nullable = false)}
     )
-    private List<Medicine> medicineList;
+    private List<Medication> medicationList;
 
 
     //Constructors
@@ -56,7 +54,7 @@ public class Patient {
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.doctor = doctor;
-        this.medicineList = new ArrayList<>();
+        this.medicationList = new ArrayList<>();
     }
 
 
@@ -113,12 +111,12 @@ public class Patient {
         this.doctor = doctor;
     }
 
-    public List<Medicine> getMedicineList() {
-        return medicineList;
+    public List<Medication> getMedicineList() {
+        return medicationList;
     }
 
-    public void setMedicineList(List<Medicine> medicineList) {
-        this.medicineList = medicineList;
+    public void setMedicineList(List<Medication> medicationList) {
+        this.medicationList = medicationList;
     }
 
 
@@ -132,7 +130,7 @@ public class Patient {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", address='" + address + '\'' +
                 ", doctor=" + doctor +
-                ", medicineList=" + medicineList +
+                ", medicineList=" + medicationList +
                 '}';
     }
 }

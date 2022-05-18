@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "medicines")
-public class Medicine {
+public class Medication {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,15 +19,15 @@ public class Medicine {
     @Column
     private float price;
 
-    @ManyToMany(mappedBy = "medicines")
+    @ManyToMany(mappedBy = "medications")
     private List<Patient> patients;
 
 
     // Constructors
-    public Medicine() {
+    public Medication() {
     }
 
-    public Medicine(String name, float price) {
+    public Medication(String name, float price) {
         this.name = name;
         this.price = price;
         this.patients = new ArrayList<>();
