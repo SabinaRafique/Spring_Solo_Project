@@ -45,6 +45,4 @@ public class MedicationController {
         medicationRepository.deleteById(id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
-
-
 }

@@ -51,7 +51,8 @@ public class Patient {
     }
 
     public Patient(String firstName, String lastName, String gender, int age, String phoneNumber, String address,
-                   Doctor doctor, List<Medication> medications) {
+                   Doctor doctor, List<Medication> medications)
+    {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -148,4 +149,3 @@ public class Patient {
                 '}';
     }
 }
-

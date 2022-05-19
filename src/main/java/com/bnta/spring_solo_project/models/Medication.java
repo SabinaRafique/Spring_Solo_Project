@@ -1,7 +1,5 @@
 package com.bnta.spring_solo_project.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +19,6 @@ public class Medication {
     @ManyToMany(mappedBy = "medications")
     private List<Patient> patients;
 
-    @ManyToMany(mappedBy = "medications")
-    @JsonIgnoreProperties({"medications"})
-    private List<Doctor> doctors;
-
 
     // Constructors
     public Medication() {
@@ -33,7 +27,6 @@ public class Medication {
     public Medication(String name) {
         this.name = name;
         this.patients = new ArrayList<>();
-        this.doctors = new ArrayList<>();
     }
 
 
@@ -58,22 +51,12 @@ public class Medication {
         this.patients = patients;
     }
 
-    public List<Doctor> getDoctors() {
-        return doctors;
-    }
-
-    public void setDoctors(List<Doctor> doctors) {
-        this.doctors = doctors;
-    }
-
-
     @Override
     public String toString() {
         return "Medication{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", patients=" + patients +
-                ", doctors=" + doctors +
                 '}';
     }
 }

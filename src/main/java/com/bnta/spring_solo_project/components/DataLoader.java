@@ -40,13 +40,12 @@ public class DataLoader implements ApplicationRunner {
 
 
         // Add some Doctors
-        Doctor doctor1 = new Doctor("Dr Alan Finchley", "Neurosurgeon", Arrays.asList(medication2, medication6));
-        Doctor doctor2 = new Doctor("Dr Claire Brown", "Dermatologist", Arrays.asList(medication7));
-        Doctor doctor3 = new Doctor("Dr Farah Ali", "GP", Arrays.asList(medication1, medication2,
-                medication3, medication4, medication5, medication6));
-        Doctor doctor4 = new Doctor("Dr Shaun Murphy", "Psychiatrist", Arrays.asList(medication5, medication6));
-        Doctor doctor5 = new Doctor("Dr Michael Peters", "Oncologist", Arrays.asList(medication1, medication2, medication5));
-        Doctor doctor6 = new Doctor("Dr Lily Anders", "Obstetrician", Arrays.asList(medication1));
+        Doctor doctor1 = new Doctor("Dr Alan Finchley", "Neurosurgeon");
+        Doctor doctor2 = new Doctor("Dr Claire Brown", "Dermatologist");
+        Doctor doctor3 = new Doctor("Dr Farah Ali", "GP");
+        Doctor doctor4 = new Doctor("Dr Shaun Murphy", "Psychiatrist");
+        Doctor doctor5 = new Doctor("Dr Michael Peters", "Oncologist");
+        Doctor doctor6 = new Doctor("Dr Lily Anders", "Obstetrician");
         doctorRepository.saveAll(
                 Arrays.asList(doctor1, doctor2, doctor3, doctor4, doctor5, doctor6));
 
@@ -69,7 +68,6 @@ public class DataLoader implements ApplicationRunner {
         Patient patient8 = new Patient("Brandon", "Masters", "Male", 65,
                 "07733220098", "5a Vicarage Road", doctor3, Arrays.asList(medication1, medication3));
         patientRepository.saveAll(Arrays.asList(patient1, patient2, patient3, patient4, patient5, patient6, patient7, patient8));
-
 
     }
 }

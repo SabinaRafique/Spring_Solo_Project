@@ -22,24 +22,14 @@ public class Doctor {
     @OneToMany(mappedBy = "doctor")
     private List<Patient> patients;
 
-    @ManyToMany
-    @JoinTable(
-            name = "doctors_medications",
-            joinColumns = @JoinColumn(name = "doctor_id", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "medication_id", nullable = false)
-    )
-    private List<Medication> medications;
-
-
     // Constructors
     public Doctor() {
     }
 
-    public Doctor(String name, String speciality, List<Medication> medications) {
+    public Doctor(String name, String speciality) {
         this.name = name;
         this.speciality = speciality;
         this.patients = new ArrayList<>();
-        this.medications = medications;
     }
 
 
@@ -72,13 +62,6 @@ public class Doctor {
         this.patients = patients;
     }
 
-    public List<Medication> getMedications() {
-        return medications;
-    }
-
-    public void setMedications(List<Medication> medications) {
-        this.medications = medications;
-    }
 
     // Add/Remove Patients
     public void addPatient(Patient patient) {
@@ -97,7 +80,6 @@ public class Doctor {
                 ", name='" + name + '\'' +
                 ", speciality='" + speciality + '\'' +
                 ", patients=" + patients +
-                ", medications=" + medications +
                 '}';
     }
 }
