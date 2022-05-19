@@ -9,7 +9,10 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 
     // Derived Queries
     List<Patient> findPatientByFirstNameIgnoreCase(String firstName);
+    // This query has been hooked to the Patient Controller
 
+
+    // Need to hook below queries to controller
     List<Patient> findPatientByLastNameIgnoreCase(String lastName);
 
     List<Patient> findPatientByAgeGreaterThan(int age);

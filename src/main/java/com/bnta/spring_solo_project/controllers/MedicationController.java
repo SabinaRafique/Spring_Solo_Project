@@ -1,5 +1,6 @@
 package com.bnta.spring_solo_project.controllers;
 
+import com.bnta.spring_solo_project.models.Doctor;
 import com.bnta.spring_solo_project.models.Medication;
 import com.bnta.spring_solo_project.repositories.MedicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,21 @@ public class MedicationController {
     MedicationRepository medicationRepository;
 
     // INDEX - tested on Postman
-    @GetMapping // localhost:8080/medications
-    public ResponseEntity<List<Medication>> getMedications() {
-        return new ResponseEntity<>(medicationRepository.findAll(), HttpStatus.OK);
+//    @GetMapping // localhost:8080/medications
+//    public ResponseEntity<List<Medication>> getMedications() {
+//        return new ResponseEntity<>(medicationRepository.findAll(), HttpStatus.OK);
+//    }
+
+    // INDEX AND FILTERS
+    @GetMapping
+    public ResponseEntity<List<Medication>> getAllMedicationAndFilters(
+            @RequestParam(required = false, name = "name") String name
+    ){
+        if(name != null){
+            return new ResponseEntity<>(medicationRepository.findMedicationByNameIgnoreCase(name), HttpStatus.OK);
+        }
+        else
+            return new ResponseEntity<>(medicationRepository.findAll(), HttpStatus.OK);
     }
 
     // SHOW

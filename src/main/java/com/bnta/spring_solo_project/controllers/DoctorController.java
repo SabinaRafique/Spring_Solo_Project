@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.Doc;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,10 +19,24 @@ public class DoctorController {
     DoctorRepository doctorRepository;
 
     // INDEX - tested on Postman
-    @GetMapping // localhost:8080/doctors
-    public ResponseEntity<List<Doctor>> getDoctors() {
-        return new ResponseEntity<>(doctorRepository.findAll(), HttpStatus.OK);
+//    @GetMapping // localhost:8080/doctors
+//    public ResponseEntity<List<Doctor>> getDoctors() {
+//        return new ResponseEntity<>(doctorRepository.findAll(), HttpStatus.OK);
+//    }
+
+
+    // INDEX AND FILTERS
+    @GetMapping
+    public ResponseEntity<List<Doctor>> getAllDoctorsAndFilters(
+            @RequestParam(required = false, name = "speciality") String speciality
+    ){
+        if(speciality != null){
+            return new ResponseEntity<>(doctorRepository.findDoctorBySpecialityIgnoreCase(speciality), HttpStatus.OK);
+        }
+        else
+            return new ResponseEntity<>(doctorRepository.findAll(), HttpStatus.OK);
     }
+
 
     // SHOW
     @GetMapping("/{id}") // localhost:8080/doctors/1 (or any other id number instead of 1)
