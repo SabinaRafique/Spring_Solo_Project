@@ -1,6 +1,5 @@
 package com.bnta.spring_solo_project.controllers;
 
-import com.bnta.spring_solo_project.models.Doctor;
 import com.bnta.spring_solo_project.models.Medication;
 import com.bnta.spring_solo_project.repositories.MedicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +32,19 @@ public class MedicationController {
     }
 
     // CREATE
-    @PostMapping // localhost:8080/medications
-    public void createMedication(@RequestBody Medication medication) {
-        medicationRepository.save(medication);
+    @PostMapping // POST localhost:8080/medications
+    public ResponseEntity<Medication> createMedication(@RequestBody Medication newMedication) {
+        medicationRepository.save(newMedication);
+        return new ResponseEntity<>(newMedication, HttpStatus.CREATED);
+    } // Functional POST request - can add items through Postman
+
+
+    // DELETE
+    @DeleteMapping("/{id}") // localhost:8080/medications/1 (or any other id number instead of 1)
+    public ResponseEntity<Long> deleteMedication (@PathVariable("id") Long id) {
+        medicationRepository.deleteById(id);
+        return new ResponseEntity<>(id, HttpStatus.OK);
     }
-    // Functional POST request - can add items through Postman
+
+
 }

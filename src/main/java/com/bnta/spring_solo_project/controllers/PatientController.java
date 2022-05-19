@@ -1,6 +1,5 @@
 package com.bnta.spring_solo_project.controllers;
 
-import com.bnta.spring_solo_project.models.Doctor;
 import com.bnta.spring_solo_project.models.Medication;
 import com.bnta.spring_solo_project.models.Patient;
 import com.bnta.spring_solo_project.repositories.PatientRepository;
@@ -34,9 +33,17 @@ public class PatientController {
     }
 
     // CREATE
-    @PostMapping // localhost:8080/patients
-        public void createPatient(@RequestBody Patient patient) {
-        patientRepository.save(patient);
+    @PostMapping // POST localhost:8080/patients
+    public ResponseEntity<Patient> createPatient(@RequestBody Patient newPatient) {
+        patientRepository.save(newPatient);
+        return new ResponseEntity<>(newPatient, HttpStatus.CREATED);
+    } // Functional POST request - can add items through Postman
+
+
+    // DELETE
+    @DeleteMapping("/{id}") // localhost:8080/patients/1 (or any other id number instead of 1)
+    public ResponseEntity<Long> deletePatient (@PathVariable("id") Long id) {
+        patientRepository.deleteById(id);
+        return new ResponseEntity<>(id, HttpStatus.OK);
     }
-    // Functional POST request - can add items through Postman
 }

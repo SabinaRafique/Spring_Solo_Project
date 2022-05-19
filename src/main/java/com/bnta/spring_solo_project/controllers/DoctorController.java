@@ -1,6 +1,7 @@
 package com.bnta.spring_solo_project.controllers;
 
 import com.bnta.spring_solo_project.models.Doctor;
+import com.bnta.spring_solo_project.models.Patient;
 import com.bnta.spring_solo_project.repositories.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,8 +34,16 @@ public class DoctorController {
 
     // CREATE
     @PostMapping // localhost:8080/doctors
-    public void createDoctor(@RequestBody Doctor doctor) {
-        doctorRepository.save(doctor);
+    public ResponseEntity<Doctor> createDoctor(@RequestBody Doctor newDoctor) {
+        doctorRepository.save(newDoctor);
+        return new ResponseEntity<>(newDoctor, HttpStatus.CREATED);
+    } // Functional POST request - can add items through Postman
+
+
+    // DELETE
+    @DeleteMapping("/{id}") // localhost:8080/doctors/1 (or any other id number instead of 1)
+    public ResponseEntity<Long> deleteDoctor (@PathVariable("id") Long id) {
+        doctorRepository.deleteById(id);
+        return new ResponseEntity<>(id, HttpStatus.OK);
     }
-    // Functional POST request - can add items through Postman
 }
