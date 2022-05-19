@@ -11,7 +11,6 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 
 @Component
@@ -49,24 +48,23 @@ public class DataLoader implements ApplicationRunner {
 
 
         // Add some Patients
-        Patient patient1 = new Patient("Sophia Masters", "Female", LocalDate.of(1995, 3, 3),
+        Patient patient1 = new Patient("Sophia", "Masters", "Female", 23,
                 "07788667541", "24 Dreamers Lane", doctor6, Arrays.asList(medication1, medication2));
-        Patient patient2 = new Patient("Alan Brown", "Male", LocalDate.of(2000, 1, 1),
+        Patient patient2 = new Patient("Alan", "Brown", "Male", 20,
                 "02085586376", "1 Made Up Avenue", doctor2, Arrays.asList(medication3, medication4));
-        Patient patient3 = new Patient("Lucy Greene", "Female", LocalDate.of(2002, 5, 5),
+        Patient patient3 = new Patient("Lucy", "Greene", "Female", 50,
                 "07892341121", "33 Sunnyside Road", doctor2, Arrays.asList(medication1, medication4));
-        Patient patient4 = new Patient("Ricky Lee", "Male", LocalDate.of(1950, 2, 25),
+        Patient patient4 = new Patient("Ricky", "Lee", "Male", 80,
                 "02083596294", "11 Westminster Avenue", doctor1, Arrays.asList(medication2, medication3));
-        Patient patient5 = new Patient("Mark Appleby", "Male", LocalDate.of(1965, 8, 2),
+        Patient patient5 = new Patient("Mark", "Appleby", "Male", 35,
                 "07845456744", "15 Apricot Avenue", doctor1, Arrays.asList(medication1, medication3));
-        Patient patient6 = new Patient("Hazel Smith", "Female", LocalDate.of(1988, 8, 8),
+        Patient patient6 = new Patient("Hazel", "Smith", "Female", 42,
                 "07538492245", "78 Hargrove Road", doctor5, Arrays.asList(medication2, medication3, medication4));
-        Patient patient7 = new Patient("Grace O'Neil", "Female", LocalDate.of(2000, 10, 31),
+        Patient patient7 = new Patient("Grace", "O'Neil", "Female", 18,
                 "07778889990", "43 Fenchurch Street", doctor4, Arrays.asList(medication2, medication4));
-        Patient patient8 = new Patient("Brandon McKormick", "Male", LocalDate.of(1975, 11, 12),
+        Patient patient8 = new Patient("Brandon", "Masters", "Male", 65,
                 "07733220098", "5a Vicarage Road", doctor3, Arrays.asList(medication2, medication3));
         patientRepository.saveAll(Arrays.asList(patient1, patient2, patient3, patient4, patient5, patient6, patient7, patient8));
-
 
 
     }

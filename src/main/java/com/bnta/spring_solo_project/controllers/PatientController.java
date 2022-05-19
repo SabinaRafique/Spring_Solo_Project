@@ -1,6 +1,5 @@
 package com.bnta.spring_solo_project.controllers;
 
-import com.bnta.spring_solo_project.models.Medication;
 import com.bnta.spring_solo_project.models.Patient;
 import com.bnta.spring_solo_project.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +41,7 @@ public class PatientController {
 
     // DELETE
     @DeleteMapping("/{id}") // localhost:8080/patients/1 (or any other id number instead of 1)
-    public ResponseEntity<Long> deletePatient (@PathVariable("id") Long id) {
+    public ResponseEntity<Long> deletePatient(@PathVariable("id") Long id) {
         patientRepository.deleteById(id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }

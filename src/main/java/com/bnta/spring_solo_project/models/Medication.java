@@ -21,7 +21,7 @@ public class Medication {
     @ManyToMany(mappedBy = "medications")
     private List<Patient> patients;
 
-    @ManyToMany (mappedBy = "medications")
+    @ManyToMany(mappedBy = "medications")
     @JsonIgnoreProperties({"medications"})
     private List<Doctor> doctors;
 

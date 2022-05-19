@@ -3,8 +3,6 @@ package com.bnta.spring_solo_project.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,13 +15,16 @@ public class Patient {
     private Long id;
 
     @Column
-    private String name;
+    private String firstName;
+
+    @Column
+    private String lastName;
 
     @Column
     private String gender;
 
     @Column
-    private LocalDate dob;
+    private int age;
 
     @Column
     private String phoneNumber;
@@ -49,11 +50,12 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(String name, String gender, LocalDate dob, String phoneNumber, String address,
+    public Patient(String firstName, String lastName, String gender, int age, String phoneNumber, String address,
                    Doctor doctor, List<Medication> medications) {
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.gender = gender;
-        this.dob = dob;
+        this.age = age;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.doctor = doctor;
@@ -66,12 +68,20 @@ public class Patient {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getGender() {
@@ -82,12 +92,12 @@ public class Patient {
         this.gender = gender;
     }
 
-    public LocalDate getDob() {
-        return dob;
+    public int getAge() {
+        return age;
     }
 
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getPhoneNumber() {
@@ -127,9 +137,10 @@ public class Patient {
     public String toString() {
         return "Patient{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", gender='" + gender + '\'' +
-                ", dob=" + dob +
+                ", age=" + age +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", address='" + address + '\'' +
                 ", doctor=" + doctor +
@@ -137,3 +148,4 @@ public class Patient {
                 '}';
     }
 }
+

@@ -41,7 +41,7 @@ public class MedicationController {
 
     // DELETE
     @DeleteMapping("/{id}") // localhost:8080/medications/1 (or any other id number instead of 1)
-    public ResponseEntity<Long> deleteMedication (@PathVariable("id") Long id) {
+    public ResponseEntity<Long> deleteMedication(@PathVariable("id") Long id) {
         medicationRepository.deleteById(id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
