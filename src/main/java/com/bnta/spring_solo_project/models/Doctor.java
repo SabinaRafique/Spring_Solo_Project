@@ -35,11 +35,11 @@ public class Doctor {
     public Doctor() {
     }
 
-    public Doctor(String name, String speciality) {
+    public Doctor(String name, String speciality, List<Medication> medications) {
         this.name = name;
         this.speciality = speciality;
         this.patients = new ArrayList<>();
-        this.medications = new ArrayList<>();
+        this.medications = medications;
     }
 
 
